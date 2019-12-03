@@ -54,9 +54,9 @@
     function ready(error, data) {
       console.log(data);
 
-      var states = topojson.feature(data, data.objects.states).features;
+      var counties = topojson.feature(data, data.objects.counties).features;
 
-      console.log(states);
+      console.log(counties);
 
       svg.selectAll(".states")
          .data(states)
