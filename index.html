@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta charset="utf-8">
+    <title>D3 World Map</title>
+    <style>
+       #info {
+         position:absolute;
+         top: 10px;
+         left: 10px;
+      }
+      .state {
+        fill: #cccccc;
+        stroke: #333333;
+        stroke-width: 0.5px;
+      }
+      .state.active {
+        fill: yellow;
+      }
+    </style>
+    <script src="d3.v4.min.js"></script>
+    <script src="topojson.v2.min.js"></script>
+    <script src="d3-queue.v3.min.js"></script>
+
+ </head>
+<body>
+  <div id="info"><h1 id="name"></h1></div>
+  <svg width=960 height=600></svg>
+
+  <script type="text/javascript">
+
+    var width = 960;
+    var height = 600;
+    var svg = d3.select("svg")
+                .append("g")
+                .attr("height", height)
+                .attr("width", width);
+
+    
+    var projection = d3.geoMercator()
+                       .scale(800)
+	               .translate([width / 2, height / 2]);
+
+
+    var path = d3.geoPath()
+                 .projection(projection);
+                
+    d3.queue()
+      .defer(d3.json,"world110.json")
+      .await(ready)
+
+
+    function ready(error, data) {
+      console.log(data);
+      
+      var states = topojson.feature(data, data.objects.countries).features;
+
+      console.log(states);
+
+      svg.selectAll(".states")
+         .data(states)
+         .enter().append("path")
+         .attr("class", "state")
+         .attr("d", path)
+         .on("mouseover", function (d) { 
+                            d3.select(this).classed("active",true);
+                            var name = d.properties.name;
+			    return document.getElementById("name").innerHTML=name;})
+         .on("mouseout", function (d) { d3.select(this).classed("active",false)});
+
+    };            
+                
+  </script>
+</body>
+</html>
