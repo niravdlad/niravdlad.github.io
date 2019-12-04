@@ -79,8 +79,12 @@
          .on("mouseout", function(d) {
            d3.select(this).classed("active",false);
          });
+
         console.log(centroids);
+
+
          svg.selectAll(".centroid").data(centroids)
+           .filter(fucntion(d) { return !( isNaN(d[0])) && !(isNan(d[1])) })
            .enter().append("circle")
              .attr("class", "centroid")
              .attr("fill", fill)
