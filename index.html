@@ -25,7 +25,7 @@
 
  </head>
 <body>
-  <h1>Updated 2104 3 December 2019</h1>
+  <h1>Updated 2131 3 December 2019</h1>
   <div id="info"><h1 id="name"></h1></div>
   <svg width=960 height=600></svg>
 
@@ -84,7 +84,7 @@
 
 
          svg.selectAll(".centroid").data(centroids)
-           .filter(fucntion(d) { return !( isNaN(d[0])) && !(isNan(d[1])) })
+           .filter(fucntion(d) { return !(isNaN(d[0])) && !(isNaN(d[1])) })
            .enter().append("circle")
              .attr("class", "centroid")
              .attr("fill", fill)
