@@ -63,7 +63,7 @@
          .enter().append("path")
          .attr("class", "state")
          .attr("d", path)
-         .text(function (d) {returne d.properties.name;})
+         .text(function (d) {return d.properties.name;})
          .on("mouseover", function(d) {
            d3.select(this).classed("active",true);
            var name = d.properties.name;
