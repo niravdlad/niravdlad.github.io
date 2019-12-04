@@ -25,7 +25,7 @@
 
  </head>
 <body>
-  <h1>Updated 2100 3 December 2019</h1>
+  <h1>Updated 2102 3 December 2019</h1>
   <div id="info"><h1 id="name"></h1></div>
   <svg width=960 height=600></svg>
 
@@ -62,8 +62,8 @@
 
       var states = topojson.feature(data, data.objects.states).features;
 
-      var centroids = features.map(function (states){
-         return path.centroid(feature);
+      var centroids = features.map(function (states) {
+         return path.centroid(states);
        });
 
       svg.selectAll(".states")
