@@ -84,7 +84,6 @@
 
 
          svg.selectAll(".centroid").data(centroids)
-           .filter(function(d) { return !(isNaN(d[0])) })
            .enter().append("circle")
            .enter().append("text")
              .attr("class", "centroid")
