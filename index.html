@@ -25,13 +25,19 @@
 
  </head>
 <body>
+  <h1>Updated 2100 3 December 2019</h1>
   <div id="info"><h1 id="name"></h1></div>
   <svg width=960 height=600></svg>
 
   <script type="text/javascript">
 
-    var width = 960;
-    var height = 600;
+    var width = 960,
+        height = 600,
+        radius = 6,
+        fill = "rgba(255, 49, 255, 0.388)",
+        stroke = "rgba(0, 0, 0, 0.5)",
+        strokeWidth = 0.1;
+
     var svg = d3.select("svg")
                 .append("g")
                 .attr("height", height)
