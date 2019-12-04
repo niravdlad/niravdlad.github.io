@@ -80,7 +80,7 @@
            d3.select(this).classed("active",false);
          });
 
-         g.selectAll(".centroid").data(centroids)
+         svg.selectAll(".centroid").data(centroids)
            .enter().append("circle")
              .attr("class", "centroid")
              .attr("fill", fill)
